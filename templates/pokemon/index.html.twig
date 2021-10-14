@@ -1,0 +1,73 @@
+{% extends 'layouts/base.html.twig' %}
+
+
+{% block content %}
+
+
+	<h1 class="text-center mt-5">
+		Pokedex
+	</h1>
+
+
+	<div class="container">
+
+		<div class="row">
+
+			{% for pokemon in pokemones.pokemon_entries %}
+
+				<div class=" col-sm-12 col-md-6 col-xl-3 text-center"> 
+
+                    <div class="card mt-2" >
+
+                                {# {% set img = '1' %} #}
+                                
+
+                                
+                                {% if  pokemon.entry_number|length == 3 %}
+                                
+                                {% set url = 'imagenes/'~ pokemon.entry_number ~'.png'  %}
+
+                                {% endif %}
+
+                                {% if  pokemon.entry_number|length == 2 %}
+                                
+                                {% set url = 'imagenes/0'~ pokemon.entry_number ~'.png'  %}
+
+                                {% endif %}
+
+                                {% if  pokemon.entry_number|length == 1 %}
+                                
+                                {% set url = 'imagenes/00'~ pokemon.entry_number ~'.png'  %}
+
+                                {% endif %}
+                                
+
+                                {{ dump(url) }}
+
+								<img src=" {{asset(url)}} " class="card-img-top">
+								<div class="card-body">
+									<h5 class="card-title text-center"> {{ pokemon.pokemon_species.name }} </h5>
+								</div>
+
+							</div>
+
+				</div>
+
+			{% endfor %}
+		</div>
+
+	</div>
+
+
+	{# <div class="card" style="width: 18rem;">
+								<img src="https://fotografiamejorparavendermas.com/wp-content/uploads/2017/06/La-importancia-de-la-imagen.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+									<h5 class="card-title">Card title</h5>
+									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<a href="#" class="btn btn-primary">Go somewhere</a>
+								</div>
+							</div>  #} 
+                            {{ dump(pokemones.pokemon_entries[0]) }}
+
+
+{% endblock %}
